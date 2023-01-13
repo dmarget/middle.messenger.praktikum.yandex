@@ -1,0 +1,41 @@
+---
+head: Профиль
+name: Иван
+---
+
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="../styles/styles.scss" rel="stylesheet" />
+    <title>{{name}}</title>
+  </head>
+  <body>
+
+    <main class="page">
+      <section class="page__profile" >
+        <h1 class="title">{{name}}</h1>
+        <div><img src="../static/svg/Union.svg" class="avatar"/></div>
+        <div class="content">
+          <div>
+            {{>profileData dataClass="input-data" key="Почта" value="test"}}
+            {{>profileData dataClass="input-data" key="Логин" value="test"}}
+            {{>profileData dataClass="input-data" key="Имя" value="test"}}
+            {{>profileData dataClass="input-data" key="Фамилия" value="test"}}
+            {{>profileData dataClass="input-data" key="Телефон" value="test"}}
+        </div>
+        <div >
+            {{> link linkTitle="Изменить пароль" linkClass="link content__action content__profile-link content__profile-link__active"}}
+            {{> link linkTitle="Изменить данные" linkClass="link content__action content__profile-link content__profile-link__active"}}
+            {{> link linkTitle="Вернуться" linkClass="link content__action content__profile-link content__profile-link__active"}}
+            {{> link linkTitle="Выйти" linkClass="content__action content__profile-link content__profile-link__exit"}}
+        </div>
+      </section>
+    </main>
+
+  </body>
+</html>

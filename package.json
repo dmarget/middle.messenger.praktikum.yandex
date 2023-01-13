@@ -1,0 +1,21 @@
+{
+  "name": "sprint_1",
+  "version": "1.0.0",
+  "description": "messenger sprint_1",
+  "scripts": {
+    "dev": "parcel index.hbs --no-cache --open",
+    "build": "parcel build index.hbs",
+    "start": "npm run build && node ./server.js"
+  },
+  "author": "dmarget",
+  "license": "ISC",
+  "dependencies": {
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@parcel/transformer-sass": "^2.8.2",
+    "express": "^4.18.2",
+    "parcel": "^2.8.2"
+  },
+  "engines": {
+    "node": ">=14.17.4"
+  }
+}

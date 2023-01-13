@@ -1,0 +1,34 @@
+---
+head: Авторизация
+description: Авторизация
+---
+
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="../styles/styles.scss" rel="stylesheet" />
+    <title>{{head}}</title>
+  </head>
+  <body>
+
+    <main class="page">
+      <section class="page__sign-in">
+        <h1 class="title">{{description}}</h1>
+        <div class="content">
+            {{>input inputClass="input input_fullWidth content__input" inputLabel="Логин" inputType="text" inputName="login"}}
+            {{>input inputClass="input input_fullWidth content__input" inputLabel="Пароль" inputType="password" inputName="password"}}
+        </div>
+        <div>
+            {{> button buttonText="Войти" buttonClass="button button_fullWidth"}}
+            {{> link linkTitle="Нет аккаута?" linkClass="link content__action content__link"}}
+        </div>
+      </section>
+    </main>
+
+  </body>
+</html>
