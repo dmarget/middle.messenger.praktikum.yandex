@@ -29,9 +29,10 @@ name: Иван
             {{>profileData dataClass="input-data" key="Телефон" value="test"}}
         </div>
         <div >
-            {{> link linkTitle="Изменить пароль" linkClass="link content__action content__profile-link content__profile-link__active"}}
-            {{> link linkTitle="Изменить данные" linkClass="link content__action content__profile-link content__profile-link__active"}}
-            {{> link linkTitle="Выйти" linkClass="content__action content__profile-link content__profile-link__exit"}}
+            {{> link linkTitle="Изменить пароль" href="#" linkClass="link content__action content__profile-link content__profile-link__active"}}
+            {{> link linkTitle="Изменить данные" href="#" linkClass="link content__action content__profile-link content__profile-link__active"}}
+            {{> link linkTitle="Вернуться" href="./plug.hbs" linkClass="link content__action content__profile-link content__profile-link__active"}}
+            {{> link linkTitle="Выйти" href="./signIn.hbs" linkClass="content__action content__profile-link content__profile-link__exit"}}
         </div>
       </section>
     </main>
