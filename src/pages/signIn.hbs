@@ -20,13 +20,15 @@ description: Авторизация
       <section class="page__sign-in">
         <h1 class="title">{{description}}</h1>
         <div class="content">
+          <form name="signInForm">
             {{>input inputClass="input input_fullWidth content__input" inputLabel="Логин" inputType="text" inputName="login"}}
             {{>input inputClass="input input_fullWidth content__input" inputLabel="Пароль" inputType="password" inputName="password"}}
+          </form>
         </div>
-        <div>
-            {{> button buttonText="Войти" buttonClass="button button_fullWidth"}}
+        <form name="signButton">
+            {{> button buttonText="Войти" buttonClass="button button_fullWidth" type="submit"}}
             {{> link href="./signUp.hbs" linkTitle="Нет аккаута?" linkClass="link content__action content__link"}}
-        </div>
+        </form>
       </section>
     </main>
 

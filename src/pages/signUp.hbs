@@ -20,17 +20,19 @@ description: Регистрация
       <section class="page__sign-up">
         <h1 class="title">{{description}}</h1>
         <div class="content">
-            {{>input inputClass="input input_fullWidth content__input" inputLabel="Почта" inputType="text" inputName="email"}}
-            {{>input inputClass="input input_fullWidth content__input" inputLabel="Логин" inputType="text" inputName="login"}}
-            {{>input inputClass="input input_fullWidth content__input" inputLabel="Имя" inputType="text" inputName="first_name"}}
-            {{>input inputClass="input input_fullWidth content__input" inputLabel="Фамилия" inputType="text" inputName="second_name"}}
-            {{>input inputClass="input input_fullWidth content__input" inputLabel="Телефон" inputType="text" inputName="phone"}}
-            {{>input inputClass="input input_fullWidth content__input" inputLabel="Пароль" inputType="password" inputName="password"}}
-            {{>input inputClass="input input_fullWidth content__input" inputLabel="Пароль(еще раз)" inputType="password" inputName="passwordAgain"}}
+            <form name="signUpForm">
+              {{>input inputClass="input input_fullWidth content__input" inputLabel="Почта" inputType="text" inputName="email"}}
+              {{>input inputClass="input input_fullWidth content__input" inputLabel="Логин" inputType="text" inputName="login"}}
+              {{>input inputClass="input input_fullWidth content__input" inputLabel="Имя" inputType="text" inputName="first_name"}}
+              {{>input inputClass="input input_fullWidth content__input" inputLabel="Фамилия" inputType="text" inputName="second_name"}}
+              {{>input inputClass="input input_fullWidth content__input" inputLabel="Телефон" inputType="text" inputName="phone"}}
+              {{>input inputClass="input input_fullWidth content__input" inputLabel="Пароль" inputType="password" inputName="password"}}
+              {{>input inputClass="input input_fullWidth content__input" inputLabel="Пароль(еще раз)" inputType="password" inputName="oldPassword"}}
+            </form>
         </div>
-        <div>
-            {{> button buttonText="Зарегистрироваться" buttonClass="button button_fullWidth"}}
-        </div>
+        <form name="regButton">
+            {{> button buttonText="Зарегистрироваться" buttonClass="button button_fullWidth" type="submit"}}
+        </form>
       </section>
     </main>
 
