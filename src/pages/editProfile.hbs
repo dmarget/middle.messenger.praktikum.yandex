@@ -21,18 +21,15 @@ name: Иван
         <h1 class="title">{{name}}</h1>
         <div><img src="../static/svg/Union.svg" class="avatar" alt="user-avatar"/></div>
         <div class="content">
-          <form>
-            {{>input inputClass="input input_fullWidth content__input" inputLabel="Почта" inputType="text" inputName="email"}}
-            {{>input inputClass="input input_fullWidth content__input" inputLabel="Логин" inputType="text" inputName="login"}}
-            {{>input inputClass="input input_fullWidth content__input" inputLabel="Имя" inputType="text" inputName="first_name"}}
-            {{>input inputClass="input input_fullWidth content__input" inputLabel="Фамилия" inputType="text" inputName="second_name"}}
-            {{>input inputClass="input input_fullWidth content__input" inputLabel="Ник" inputType="text" inputName="display_name"}}
-            {{>input inputClass="input input_fullWidth content__input" inputLabel="Телефон" inputType="text" inputName="phone"}}
-            {{>input inputClass="input input_fullWidth content__input" inputLabel="Пароль" inputType="password" inputName="oldPassword"}}
-            {{>input inputClass="input input_fullWidth content__input" inputLabel="Пароль(еще раз)" inputType="password" inputName="newPassword"}}
-        </form>
-        <div>
-            <form name="saveEdit">
+            <form name="editProfileForm">
+                {{>input inputClass="input input_fullWidth content__input" inputLabel="Почта" inputType="text" inputName="email"}}
+                {{>input inputClass="input input_fullWidth content__input" inputLabel="Логин" inputType="text" inputName="login"}}
+                {{>input inputClass="input input_fullWidth content__input" inputLabel="Имя" inputType="text" inputName="first_name"}}
+                {{>input inputClass="input input_fullWidth content__input" inputLabel="Фамилия" inputType="text" inputName="second_name"}}
+                {{>input inputClass="input input_fullWidth content__input" inputLabel="Ник" inputType="text" inputName="display_name"}}
+                {{>input inputClass="input input_fullWidth content__input" inputLabel="Телефон" inputType="text" inputName="phone"}}
+                {{>input inputClass="input input_fullWidth content__input" inputLabel="Пароль" inputType="password" inputName="oldPassword"}}
+                {{>input inputClass="input input_fullWidth content__input" inputLabel="Пароль(еще раз)" inputType="password" inputName="newPassword"}}
                 {{> button buttonText="Сохранить" buttonClass="button button_fullWidth" type="submit"}}
             </form>
         </div>

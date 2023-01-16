@@ -21,17 +21,16 @@ name: Иван
         <h1 class="title">{{name}}</h1>
         <div><img src="../static/svg/Union.svg" class="avatar" alt="User Avatar"/></div>
         <div class="content">
-          <form name="editProfileForm">
+          <form name="profileForm">
             {{>profileData dataClass="input-data" key="Почта" value="Предположим здесь почта"}}
             {{>profileData dataClass="input-data" key="Логин" value="А здесь логин"}}
             {{>profileData dataClass="input-data" key="Имя" value="test"}}
             {{>profileData dataClass="input-data" key="Фамилия" value="test"}}
             {{>profileData dataClass="input-data" key="Телефон" value="test"}}
-        </form>
-        <div >
             {{> link linkTitle="Изменить данные" href="./editProfile.hbs" linkClass="link content__action content__profile-link content__profile-link__active"}}
             {{> link linkTitle="Вернуться" href="./plug.hbs" linkClass="link content__action content__profile-link content__profile-link__active"}}
             {{> link linkTitle="Выйти" href="./signIn.hbs" linkClass="content__action content__profile-link content__profile-link__exit"}}
+            </form>
         </div>
       </section>
     </main>
