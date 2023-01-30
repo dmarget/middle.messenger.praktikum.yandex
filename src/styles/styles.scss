@@ -1,8 +1,4 @@
-$secondaryColor: rgba(0,0,0,.72);
-$primaryColor: #333F48;
-$activeColor: rgb(10, 62, 204);
-$backgroundColor: #ffffff;
-$alertColor: rgb(208, 0, 0);
+@import "./constants.scss";
 
 * {
     outline: none;
@@ -106,6 +102,12 @@ body {
       text-align: center;
   }
 
+  &__to-profile-link {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
   &__profile-link {
     display: block;
     width: 100%;
@@ -136,28 +138,6 @@ body {
       width: 100%;
   }
 
-}
-
-.button {
-
-  font-size: 16px;
-  color: $primaryColor;
-  height: 40px;
-  padding: 10px 20px;
-  border: 1px solid black;
-  border-radius: 6px;
-  text-decoration: none;
-  cursor: pointer;
-  background-color: $backgroundColor;
-
-  &_fullWidth {
-    width: 100%;
-  }
-
-  &:hover {
-    border-color: $activeColor;
-    color: $activeColor;
-  }
 }
 
 .input-data {
@@ -196,5 +176,91 @@ body {
 
     &:hover,&:focus {
         color: $activeColor;
+    }
+}
+
+.messagePreview {
+    width: 300px;
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 5px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 4px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &_active {
+        background-color: $fourthColor;
+    }
+
+    &:hover {
+        background-color: $fourthColor;
+    }
+
+    &__avatar {
+        width: 47px;
+        min-width: 47px;
+        height: 47px;
+        min-height: 47px;
+        border-radius: 50%;
+        background-color: $fourthColor;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        margin-left: 10px;
+    }
+
+    &__meta {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 4px;
+    }
+
+    &__title {
+        font-size: 13px;
+        line-height: 13px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    &__message {
+        display: block;
+        display: -webkit-box;
+        font-size: 12px;
+        line-height: 15px;
+        font-weight: 500;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    &__data {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__date {
+        font-size: 9px;
+        line-height: 13px;
+        font-weight: 500;
+    }
+
+    &__count {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+        background-color: $activeColor;
+        border-radius: 50%;
+        color: $backgroundColor;
+        font-size: 11px;
+        line-height: 12px;
+        font-weight: 500;
     }
 }
