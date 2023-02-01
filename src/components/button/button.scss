@@ -1,0 +1,43 @@
+@import "../../styles.scss";
+
+.button {
+  font-size: 16px;
+  color: $primary-color;
+  height: 40px;
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: $border-radius;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: $background-color;
+
+  &_rounded {
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+
+  &_fullWidth {
+    width: 100%;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $active-color;
+    border-color: $active-color;
+  }
+}
+
+.link {
+  font-size: 14px;
+  text-decoration: none;
+  color: $secondary-color;
+
+  &:hover,
+  &:focus {
+    color: $active-color;
+  }
+}
