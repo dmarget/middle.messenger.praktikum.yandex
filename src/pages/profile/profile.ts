@@ -9,7 +9,6 @@ import { ProfileData } from "../../components/profileData/profileData";
 import { EditPasswordPage } from "../editPassword/editPassword";
 import { EditProfilePage } from "../editProfile/editProfile";
 
-// временное
 const MOCK_DATA = {
   Почта: "email@example.com",
   Логин: "ivan",
