@@ -11,7 +11,12 @@ type Options = {
   data?: any;
   timeout?: number;
   headers?: Record<string, string>;
-}
+};
+
+type HTTPMethod = (
+  url: string,
+  options?: Omit<Options, "method">
+) => Promise<XMLHttpRequest | unknown>;
 
 export function queryStringify(data: any) {
   if (typeof data !== "object") {
@@ -23,60 +28,45 @@ export function queryStringify(data: any) {
 }
 
 export class httpService {
-  get(
-    url: string,
-    options: Omit<Options, "method">
-  ): Promise<XMLHttpRequest | unknown> {
+  get: HTTPMethod = (url, options = {}) => {
     return this.request(
       url,
       { ...options, method: Methods.GET },
       options.timeout
     );
-  }
+  };
 
-  post(
-    url: string,
-    options: Omit<Options, "method">
-  ): Promise<XMLHttpRequest | unknown> {
+  post: HTTPMethod = (url, options = {}) => {
     return this.request(
       url,
       { ...options, method: Methods.POST },
       options.timeout
     );
-  }
+  };
 
-  put(
-    url: string,
-    options: Omit<Options, "method">
-  ): Promise<XMLHttpRequest | unknown> {
+  put: HTTPMethod = (url, options = {}) => {
     return this.request(
       url,
       { ...options, method: Methods.PUT },
       options.timeout
     );
-  }
+  };
 
-  patch(
-    url: string,
-    options: Omit<Options, "method">
-  ): Promise<XMLHttpRequest | unknown> {
+  patch: HTTPMethod = (url, options = {}) => {
     return this.request(
       url,
       { ...options, method: Methods.PATCH },
       options.timeout
     );
-  }
+  };
 
-  delete(
-    url: string,
-    options: Omit<Options, "method">
-  ): Promise<XMLHttpRequest | unknown> {
+  delete: HTTPMethod = (url, options = {}) => {
     return this.request(
       url,
       { ...options, method: Methods.DELETE },
       options.timeout
     );
-  }
+  };
 
   request(
     url: string,
@@ -87,7 +77,10 @@ export class httpService {
 
     return new Promise(function (resolve, reject) {
       const xhr = new XMLHttpRequest();
-      xhr.open(method, method === Methods.GET && !!data ? `${url}${queryStringify(data)}` : url);
+      xhr.open(
+        method,
+        method === Methods.GET && !!data ? `${url}${queryStringify(data)}` : url
+      );
 
       Object.keys(headers).forEach((key) => {
         xhr.setRequestHeader(key, headers[key]);
