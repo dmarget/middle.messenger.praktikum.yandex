@@ -11,6 +11,7 @@ type InputProps = {
   inputPlaceholder?: string;
   inputClass: string;
   inputWrapperClass?: string;
+  events?: any;
 }
 
 export class Input extends Block<InputProps> {

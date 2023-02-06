@@ -27,6 +27,11 @@ export class SignIn extends Block<SignInPageProps> {
           inputName: "login",
           inputClass: "input input_fullWidth ",
           inputWrapperClass: "user-info__input",
+          events: {
+            //Как примерно должно работать
+            blur: (e: Event) => {console.log("blur Обработчик с валидацией")},
+            change: (e: Event) => {console.log("change")}
+          }
         }),
         new Input({
           labelText: "Пароль",
