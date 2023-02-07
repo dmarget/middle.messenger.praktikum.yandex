@@ -28,45 +28,35 @@ export function queryStringify(data: any) {
 }
 
 export class httpService {
-  get: HTTPMethod = (url, options = {}) => {
-    return this.request(
-      url,
-      { ...options, method: Methods.GET },
-      options.timeout
-    );
-  };
+  get: HTTPMethod = (url, options = {}) => this.request(
+    url,
+    { ...options, method: Methods.GET },
+    options.timeout
+  );
 
-  post: HTTPMethod = (url, options = {}) => {
-    return this.request(
-      url,
-      { ...options, method: Methods.POST },
-      options.timeout
-    );
-  };
+  post: HTTPMethod = (url, options = {}) => this.request(
+    url,
+    { ...options, method: Methods.POST },
+    options.timeout
+  );
 
-  put: HTTPMethod = (url, options = {}) => {
-    return this.request(
-      url,
-      { ...options, method: Methods.PUT },
-      options.timeout
-    );
-  };
+  put: HTTPMethod = (url, options = {}) => this.request(
+    url,
+    { ...options, method: Methods.PUT },
+    options.timeout
+  );
 
-  patch: HTTPMethod = (url, options = {}) => {
-    return this.request(
-      url,
-      { ...options, method: Methods.PATCH },
-      options.timeout
-    );
-  };
+  patch: HTTPMethod = (url, options = {}) => this.request(
+    url,
+    { ...options, method: Methods.PATCH },
+    options.timeout
+  );
 
-  delete: HTTPMethod = (url, options = {}) => {
-    return this.request(
-      url,
-      { ...options, method: Methods.DELETE },
-      options.timeout
-    );
-  };
+  delete: HTTPMethod = (url, options = {}) => this.request(
+    url,
+    { ...options, method: Methods.DELETE },
+    options.timeout
+  );
 
   request(
     url: string,

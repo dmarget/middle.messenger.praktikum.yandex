@@ -4,9 +4,10 @@ import { Input } from "../../components/input/input";
 import { UserInfo } from "../../components/userInfo/userInfo";
 import { Button } from "../../components/button/button";
 import { UserAction } from "../../components/userAction/userAction";
-import { FormValidator } from "../../blocks/formValidation/formValidation";
 import { route } from "../../utils/route";
 import { ProfilePage } from "../profile/profile";
+import { validateOnBlur } from "../../blocks/formValidation/formValidation";
+import { ErrorInput } from "../../components/errorInput/errorInput";
 
 export class EditPasswordPage extends Block {
   constructor(props: any) {
@@ -16,26 +17,44 @@ export class EditPasswordPage extends Block {
   init() {
     this.children.userInfo = new UserInfo({
       inputs: [
-        new Input({
+        new ErrorInput({
           labelText: "Старый пароль",
-          inputType: "password",
-          inputName: "old_password",
-          inputClass: "input input_fullWidth",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "password",
+            inputName: "old_password",
+            inputClass: "input input_fullWidth",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
-        new Input({
+        new ErrorInput({
           labelText: "Новый пароль",
-          inputType: "password",
-          inputName: "password",
-          inputClass: "input input_fullWidth",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "password",
+            inputName: "password",
+            inputClass: "input input_fullWidth",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
-        new Input({
+        new ErrorInput({
           labelText: "Новый пароль (ещё раз)",
-          inputType: "password",
-          inputName: "repeat_password",
-          inputClass: "input input_fullWidth",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "password",
+            inputName: "repeat_password",
+            inputClass: "input input_fullWidth",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
       ],
     });
@@ -46,8 +65,7 @@ export class EditPasswordPage extends Block {
           text: "Сохранить",
           class: "button button_fullWidth user-info__action",
           events: {
-            click: () => {
-            },
+            click: () => {},
           },
         }),
         new Button({
@@ -67,17 +85,7 @@ export class EditPasswordPage extends Block {
     });
   }
 
-  addValidation(element: DocumentFragment) {
-    const profilePage = new ProfilePage({});
-    const form = element.querySelector(".form") as HTMLFormElement;
-    const formValidation = new FormValidator(form, ["old_password", "password", "repeat_password"], () => route(profilePage));
-    formValidation.initialize();
-  }
-
   render() {
-    const element = this.compile(template, {});
-    this.addValidation(element);
-
-    return element;
+    return this.compile(template, {});
   }
 }

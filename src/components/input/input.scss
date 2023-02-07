@@ -1,53 +1,5 @@
 @import "../../styles.scss";
 
-.label-wrapper {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-
-  &__error-info {
-    display: none;
-  }
-
-  &_error &__error-info {
-    display: block;
-    font-size: 14px;
-    text-decoration: underline dashed $error-color;
-    color: $error-color;
-    margin-left: 12px;
-    cursor: pointer;
-  }
-
-  &__error-info-text {
-    display: none;
-    padding: 10px;
-    position: absolute;
-    z-index: 1;
-    font-size: 10px;
-    color: $error-color;
-    width: 200px;
-    text-decoration: none;
-    background-color: white;
-    border: 1px solid red;
-    border-radius: $border-radius;
-  }
-
-  &:hover &__error-info-text {
-    display: block;
-  }
-}
-
-.input-error {
-  display: none;
-}
-
-.label {
-  font-size: 14px;
-  display: block;
-  margin-bottom: 8px;
-  color: $third-color;
-}
-
 .input {
   font-size: 16px;
   color: $secondary-color;

@@ -1,11 +1,11 @@
 import { Block } from "../../blocks/block/block";
 import template from "./userInfo.hbs";
-import { Input } from "../input/input";
 import { ProfileData } from "../profileData/profileData";
 import './userInfo.scss';
+import { ErrorInput } from "../errorInput/errorInput";
 
 type UserInfoProps = {
-  inputs?: Input[];
+  inputs?: ErrorInput[];
   profileData?: ProfileData[];
 }
 

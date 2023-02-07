@@ -9,58 +9,58 @@ class Validations {
       errorMsg: string;
     }
   > = {
-    login: {
-      pattern: /^(?=.*[a-zA-Z])([a-zA-Z0-9-_]){3,20}$/,
-      errorMsg:
+      login: {
+        pattern: /^(?=.*[a-zA-Z])([a-zA-Z0-9-_]){3,20}$/,
+        errorMsg:
         "от 3 до 20 символов, латиница, может содержать цифры, " +
         "но не состоять из них, без пробелов, без спецсимволов " +
         "(допустимы дефис и нижнее подчёркивание)",
-    },
-    password: {
-      pattern: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/,
-      errorMsg:
+      },
+      password: {
+        pattern: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/,
+        errorMsg:
         "от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра",
-    },
-    oldPassword: {
-      pattern: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/,
-      errorMsg:
+      },
+      oldPassword: {
+        pattern: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/,
+        errorMsg:
         "от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра",
-    },
-    email: {
-      pattern: /.+@[^@]+[a-z]+\.[^@]{2,}$/,
-      errorMsg:
+      },
+      email: {
+        pattern: /.+@[^@]+[a-z]+\.[^@]{2,}$/,
+        errorMsg:
         "латиница, может включать цифры и спецсимволы вроде дефиса, " +
         "обязательно должна быть «собака» (@) " +
         "и точка после неё, но перед точкой обязательно должны быть буквы",
-    },
-    first_name: {
-      pattern: /^[А-ЯЁA-Z][А-ЯЁA-Zа-яёa-z-]+$/,
-      errorMsg:
+      },
+      first_name: {
+        pattern: /^[А-ЯЁA-Z][А-ЯЁA-Zа-яёa-z-]+$/,
+        errorMsg:
         "латиница или кириллица, первая буква должна быть заглавной, " +
         "без пробелов и без цифр, нет спецсимволов (допустим только дефис)",
-    },
-    second_name: {
-      pattern: /^[А-ЯЁA-Z][А-ЯЁA-Zа-яёa-z-]+$/,
-      errorMsg:
+      },
+      second_name: {
+        pattern: /^[А-ЯЁA-Z][А-ЯЁA-Zа-яёa-z-]+$/,
+        errorMsg:
         "латиница или кириллица, первая буква должна быть заглавной, " +
         "без пробелов и без цифр, нет спецсимволов (допустим только дефис)",
-    },
-    chat_name: {
-      pattern: /^[А-ЯЁA-Z][А-ЯЁA-Zа-яёa-z-]+$/,
-      errorMsg:
+      },
+      chat_name: {
+        pattern: /^[А-ЯЁA-Z][А-ЯЁA-Zа-яёa-z-]+$/,
+        errorMsg:
         "латиница или кириллица, первая буква должна быть заглавной, " +
         "без пробелов и без цифр, нет спецсимволов (допустим только дефис)",
-    },
-    phone: {
-      pattern: /^[+-d]?\d{10,15}$/,
-      errorMsg:
+      },
+      phone: {
+        pattern: /^[+-d]?\d{10,15}$/,
+        errorMsg:
         "от 10 до 15 символов, состоит из цифр, может начинается с плюса",
-    },
-    message: {
-      pattern: /(.|\s)*\S(.|\s)*/,
-      errorMsg: "Сообщение не может быть пустым",
-    },
-  };
+      },
+      message: {
+        pattern: /(.|\s)*\S(.|\s)*/,
+        errorMsg: "Сообщение не может быть пустым",
+      },
+    };
 }
 
 export const onSubmit = (event: any, page: Block) => {
@@ -77,13 +77,10 @@ export const onSubmit = (event: any, page: Block) => {
   });
 
   if (isError) {
-    event.target.form.nextSibling.textContent = "Заполните все поля правильно";
     return;
-  } else {
-    route(page);
   }
+  route(page);
 
-  event.target.form.nextSibling.textContent = "";
   inputList.forEach((input: any) => {
     inputValue[input.name] = input.value;
   });

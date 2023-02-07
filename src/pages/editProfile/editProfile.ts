@@ -4,9 +4,13 @@ import { Input } from "../../components/input/input";
 import { UserInfo } from "../../components/userInfo/userInfo";
 import { Button } from "../../components/button/button";
 import { UserAction } from "../../components/userAction/userAction";
-import { FormValidator } from "../../blocks/formValidation/formValidation";
 import { route } from "../../utils/route";
 import { ProfilePage } from "../profile/profile";
+import {
+  onSubmit,
+  validateOnBlur,
+} from "../../blocks/formValidation/formValidation";
+import { ErrorInput } from "../../components/errorInput/errorInput";
 
 export class EditProfilePage extends Block {
   constructor(props: any) {
@@ -16,47 +20,83 @@ export class EditProfilePage extends Block {
   init() {
     this.children.userInfo = new UserInfo({
       inputs: [
-        new Input({
+        new ErrorInput({
           labelText: "Имя",
-          inputType: "text",
-          inputName: "first_name",
-          inputClass: "input input_fullWidth ",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "text",
+            inputName: "first_name",
+            inputClass: "input input_fullWidth ",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
-        new Input({
+        new ErrorInput({
           labelText: "Фамилия",
-          inputType: "text",
-          inputName: "second_name",
-          inputClass: "input input_fullWidth ",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "text",
+            inputName: "second_name",
+            inputClass: "input input_fullWidth ",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
-        new Input({
+        new ErrorInput({
           labelText: "Логин",
-          inputType: "text",
-          inputName: "login",
-          inputClass: "input input_fullWidth ",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "text",
+            inputName: "login",
+            inputClass: "input input_fullWidth ",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
-        new Input({
+        new ErrorInput({
           labelText: "Отображаемое имя",
-          inputType: "text",
-          inputName: "display_name",
-          inputClass: "input input_fullWidth ",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "text",
+            inputName: "display_name",
+            inputClass: "input input_fullWidth ",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
-        new Input({
+        new ErrorInput({
           labelText: "Почта",
-          inputType: "text",
-          inputName: "email",
-          inputClass: "input input_fullWidth ",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "text",
+            inputName: "email",
+            inputClass: "input input_fullWidth ",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
-        new Input({
+        new ErrorInput({
           labelText: "Телефон",
-          inputType: "tel",
-          inputName: "phone",
-          inputClass: "input input_fullWidth ",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "tel",
+            inputName: "phone",
+            inputClass: "input input_fullWidth ",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
       ],
     });
@@ -66,6 +106,13 @@ export class EditProfilePage extends Block {
         new Button({
           text: "Сохранить",
           class: "button button_fullWidth user-info__action",
+          events: {
+            click: (e) => {
+              e.preventDefault();
+              const profilePage = new ProfilePage({});
+              onSubmit(e, profilePage);
+            },
+          },
         }),
         new Button({
           text: "Отмена",
@@ -84,21 +131,7 @@ export class EditProfilePage extends Block {
     });
   }
 
-  addValidation(element: DocumentFragment) {
-    const profilePage = new ProfilePage({});
-    const form = element.querySelector(".form") as HTMLFormElement;
-    const formValidation = new FormValidator(
-      form,
-      ["first_name", "second_name", "phone", "login", "email", "display_name"],
-      () => route(profilePage)
-    );
-    formValidation.initialize();
-  }
-
   render() {
-    const element = this.compile(template, {});
-    this.addValidation(element);
-
-    return element;
+    return this.compile(template, {});
   }
 }

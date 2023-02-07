@@ -6,10 +6,11 @@ import { MessagePreview } from "../../components/messagePreview/messagePreview";
 import "./messenger.scss";
 import { ProfilePage } from "../profile/profile";
 import { route } from "../../utils/route";
+import { ErrorInput } from "../../components/errorInput/errorInput";
 
 type MessengerPageProps = {
   title: string;
-}
+};
 
 export class MessengerPage extends Block<MessengerPageProps> {
   constructor(props: any) {
@@ -42,22 +43,25 @@ export class MessengerPage extends Block<MessengerPageProps> {
         },
       },
     });
-    (this.children.searchInput = new Input({
+    (this.children.searchInput = new ErrorInput({
       labelText: "Поиск",
-      inputType: "text",
-      inputName: "message",
       labelClass: "chats__search-label",
-      inputClass: "input chats__search",
-      inputPlaceholder: "Поиск чата",
+      input: new Input({
+        inputType: "text",
+        inputName: "message",
+        inputClass: "input chats__search",
+        inputPlaceholder: "Поиск чата",
+      }),
     }));
-
-    this.children.inputMessage = new Input({
+    (this.children.inputMessage = new ErrorInput({
       labelText: "Сообщение",
-      inputType: "text",
-      inputName: "message",
-      inputClass: "input input_fullWidth chat__input",
-    });
-    this.children.buttons = [
+      input: new Input({
+        inputType: "text",
+        inputName: "message",
+        inputClass: "input input_fullWidth chat__input",
+      }),
+    }));
+    (this.children.buttons = [
       new Button({
         text: "Отправить",
         class: "button chat__footer-button",
@@ -65,13 +69,10 @@ export class MessengerPage extends Block<MessengerPageProps> {
           click: () => {},
         },
       }),
-    ];
+    ]);
   }
 
   render() {
-    const element = this.compile(template, {});
-    this.addValidation(element);
-
-    return element;
+    return this.compile(template, {});
   }
 }

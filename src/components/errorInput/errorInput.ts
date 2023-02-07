@@ -1,6 +1,6 @@
 import { Block } from "../../blocks/block/block";
 import { Input } from "../input/input";
-import template from "../errorInput/errorInput.hbs";
+import template from "./errorInput.hbs";
 import "./errorInput.scss";
 
 type ErrorInputProps = {
