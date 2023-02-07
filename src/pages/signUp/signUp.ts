@@ -4,73 +4,121 @@ import { Input } from "../../components/input/input";
 import { UserInfo } from "../../components/userInfo/userInfo";
 import { Button } from "../../components/button/button";
 import { UserAction } from "../../components/userAction/userAction";
-import { FormValidator } from "../../blocks/formValidation/formValidation";
-import { route } from "../../utils/route";
-import { ProfilePage } from "../profile/profile";
+import { ErrorInput } from "../../components/errorInput/errorInput";
+import { onSubmit, validateOnBlur } from "../../blocks/formValidation/formValidation";
+import { MessengerPage } from "../messenger/messenger";
 
 export class SignInPage extends Block {
-  constructor(props:any) {
+  constructor(props: any) {
     super("div", props);
   }
 
   init() {
     this.children.userInfo = new UserInfo({
       inputs: [
-        new Input({
+        new ErrorInput({
           labelText: "Имя",
-          inputType: "text",
-          inputName: "first_name",
-          inputClass: "input input_fullWidth ",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "text",
+            inputName: "first_name",
+            inputClass: "input input_fullWidth ",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
-        new Input({
+        new ErrorInput({
           labelText: "Фамилия",
-          inputType: "text",
-          inputName: "second_name",
-          inputClass: "input input_fullWidth ",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "text",
+            inputName: "second_name",
+            inputClass: "input input_fullWidth ",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
-        new Input({
+        new ErrorInput({
           labelText: "Логин",
-          inputType: "text",
-          inputName: "login",
-          inputClass: "input input_fullWidth ",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "text",
+            inputName: "login",
+            inputClass: "input input_fullWidth ",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
-        new Input({
+        new ErrorInput({
           labelText: "Отображаемое имя",
-          inputType: "text",
-          inputName: "display_name",
-          inputClass: "input input_fullWidth ",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "text",
+            inputName: "display_name",
+            inputClass: "input input_fullWidth ",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
-        new Input({
+        new ErrorInput({
           labelText: "Почта",
-          inputType: "text",
-          inputName: "email",
-          inputClass: "input input_fullWidth ",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "text",
+            inputName: "email",
+            inputClass: "input input_fullWidth ",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
-        new Input({
+        new ErrorInput({
           labelText: "Телефон",
-          inputType: "tel",
-          inputName: "phone",
-          inputClass: "input input_fullWidth ",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "tel",
+            inputName: "phone",
+            inputClass: "input input_fullWidth ",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
-        new Input({
+        new ErrorInput({
           labelText: "Пароль",
-          inputType: "password",
-          inputName: "password",
-          inputClass: "input input_fullWidth",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "password",
+            inputName: "password",
+            inputClass: "input input_fullWidth",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
-        new Input({
+        new ErrorInput({
           labelText: "Пароль (ещё раз)",
-          inputType: "password",
-          inputName: "repeat_password",
-          inputClass: "input input_fullWidth",
           inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "password",
+            inputName: "repeat_password",
+            inputClass: "input input_fullWidth",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
       ],
     });
@@ -81,28 +129,17 @@ export class SignInPage extends Block {
           text: "Зарегистрироваться",
           class: "button button_fullWidth user-info__action",
           events: {
-            click: () => {},
+            click: (e) => {
+              const messengerPage = new MessengerPage({});
+              onSubmit(e, messengerPage);
+            },
           },
         }),
       ],
     });
   }
 
-  addValidation(element: DocumentFragment) {
-    const form = element.querySelector(".form") as HTMLFormElement;
-    const profilePage = new ProfilePage({});
-    const formValidation = new FormValidator(
-      form,
-      ["first_name", "second_name", "phone", "login", "email", "password", "repeat_password", "display_name"],
-      () => route(profilePage)
-    );
-    formValidation.initialize();
-  }
-
   render() {
-    const element = this.compile(template, {});
-    this.addValidation(element);
-
-    return element;
+    return this.compile(template, {});
   }
 }

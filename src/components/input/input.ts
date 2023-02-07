@@ -3,15 +3,15 @@ import template from "./input.hbs";
 import "./input.scss";
 
 type InputProps = {
-  labelClass?: string;
-  labelText: string;
   inputType: string;
   inputValue?: string;
   inputName: string;
   inputPlaceholder?: string;
   inputClass: string;
-  inputWrapperClass?: string;
-  events?: any;
+  events?: {
+    blur: (e:Event) => void;
+    focus: (e:Event) => void;
+  };
 }
 
 export class Input extends Block<InputProps> {

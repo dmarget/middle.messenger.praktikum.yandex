@@ -4,41 +4,50 @@ import { Input } from "../../components/input/input";
 import { UserInfo } from "../../components/userInfo/userInfo";
 import { Button } from "../../components/button/button";
 import { UserAction } from "../../components/userAction/userAction";
-import { FormValidator } from "../../blocks/formValidation/formValidation";
+import {
+  onSubmit,
+  validateOnBlur,
+} from "../../blocks/formValidation/formValidation";
 import { route } from "../../utils/route";
 import { SignInPage } from "../signUp/signUp";
 import { MessengerPage } from "../messenger/messenger";
+import { ErrorInput } from "../../components/errorInput/errorInput";
 
 type SignInPageProps = {
   title: string;
-}
+};
 
 export class SignIn extends Block<SignInPageProps> {
-  constructor(props:any) {
+  constructor(props: any) {
     super(props, "div");
   }
 
   init() {
     this.children.userInfo = new UserInfo({
       inputs: [
-        new Input({
+        new ErrorInput({
           labelText: "Логин",
-          inputType: "text",
-          inputName: "login",
-          inputClass: "input input_fullWidth ",
-          inputWrapperClass: "user-info__input",
-          events: {
-            //Как примерно должно работать
-            blur: (e: Event) => {console.log("blur Обработчик с валидацией")},
-            change: (e: Event) => {console.log("change")}
-          }
+          input: new Input({
+            inputType: "text",
+            inputName: "login",
+            inputClass: "input input_fullWidth ",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
-        new Input({
+        new ErrorInput({
           labelText: "Пароль",
-          inputType: "password",
-          inputName: "password",
-          inputClass: "input input_fullWidth",
-          inputWrapperClass: "user-info__input",
+          input: new Input({
+            inputType: "password",
+            inputName: "password",
+            inputClass: "input input_fullWidth",
+            events: {
+              blur: validateOnBlur,
+              focus: validateOnBlur,
+            },
+          }),
         }),
       ],
     });
@@ -49,7 +58,10 @@ export class SignIn extends Block<SignInPageProps> {
           text: "Войти",
           class: "button button_fullWidth user-info__action",
           events: {
-            click: () => {},
+            click: (e) => {
+              const messengerPage = new MessengerPage({});
+              onSubmit(e, messengerPage);
+            },
           },
         }),
         new Button({
@@ -69,18 +81,7 @@ export class SignIn extends Block<SignInPageProps> {
     });
   }
 
-  addValidation(element: DocumentFragment) {
-    const form = element.querySelector(".form") as HTMLFormElement;
-    const messengerPage = new MessengerPage({});
-
-    const formValidation = new FormValidator(form, ["login", "password"], () => route(messengerPage));
-    formValidation.initialize();
-  }
-
   render() {
-    const element = this.compile(template, { title: this.props.title });
-    this.addValidation(element);
-
-    return element;
+    return this.compile(template, { title: this.props.title });
   }
 }

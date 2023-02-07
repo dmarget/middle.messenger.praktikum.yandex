@@ -1,6 +1,5 @@
 import { EventBus } from "../eventBus/eventBus";
 import { v4 } from "uuid";
-import { FormValidator } from "../formValidation/formValidation";
 
 export class Block<P = any> {
   _meta: {
@@ -104,16 +103,6 @@ export class Block<P = any> {
     }
     this._element = newElement;
     this._addEvents();
-  }
-
-  protected addValidation(element: DocumentFragment) {
-    const form = element.querySelector(
-      ".form"
-    ) as HTMLFormElement as HTMLFormElement;
-    if (form) {
-      const formValidation = new FormValidator(form, []);
-      formValidation.initialize();
-    }
   }
 
   protected compile(template: (context: any) => string, context: any) {
