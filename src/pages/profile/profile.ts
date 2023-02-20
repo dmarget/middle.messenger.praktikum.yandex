@@ -3,11 +3,8 @@ import template from "./profile.hbs";
 import { UserInfo } from "../../components/userInfo/userInfo";
 import { Button } from "../../components/button/button";
 import { UserAction } from "../../components/userAction/userAction";
-import { SignInPage } from "../signUp/signUp";
-import { route } from "../../utils/route";
+import route from "../../blocks/router/Router";
 import { ProfileData } from "../../components/profileData/profileData";
-import { EditPasswordPage } from "../editPassword/editPassword";
-import { EditProfilePage } from "../editProfile/editProfile";
 
 const MOCK_DATA = {
   Почта: "email@example.com",
@@ -37,10 +34,7 @@ export class ProfilePage extends Block {
           events: {
             click: (e) => {
               e.preventDefault();
-              const editProfilePage = new EditProfilePage({
-                title: "Регистрация",
-              });
-              route(editProfilePage);
+              route.go('/register');
             },
           },
         }),
@@ -52,8 +46,7 @@ export class ProfilePage extends Block {
           events: {
             click: (e) => {
               e.preventDefault();
-              const editPasswordPage = new EditPasswordPage({});
-              route(editPasswordPage);
+              route.go("/editPassword");
             },
           },
         }),
@@ -65,10 +58,7 @@ export class ProfilePage extends Block {
           events: {
             click: (e) => {
               e.preventDefault();
-              const registrationPage = new SignInPage({
-                title: "Регистрация",
-              });
-              route(registrationPage);
+              route.go("/register");
             },
           },
         }),

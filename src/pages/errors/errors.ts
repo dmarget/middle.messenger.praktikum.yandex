@@ -1,16 +1,15 @@
 import { Block } from "../../blocks/block/block";
-import template from "./problem.hbs";
-import "./problem.scss";
+import template from "./errors.hbs";
+import "./errors.scss";
 import { Button } from "../../components/button/button";
-import { route } from "../../utils/route";
-import { MessengerPage } from "../messenger/messenger";
+import route from "../../blocks/router/Router";
 
-type ProblemPageProps = {
+type ErrorsPageProps = {
   title: string;
   subtitle: string;
 }
 
-export class ProblemPage extends Block<ProblemPageProps> {
+export class ErrorsPage extends Block<ErrorsPageProps> {
   constructor({ title = "404", subtitle = "не туда попали" }) {
     super({ title, subtitle }, "div");
   }
@@ -22,8 +21,7 @@ export class ProblemPage extends Block<ProblemPageProps> {
       events: {
         click: (e) => {
           e.preventDefault();
-          const messengerPage = new MessengerPage({});
-          route(messengerPage);
+          route.go("/messenger")
         },
       },
     });

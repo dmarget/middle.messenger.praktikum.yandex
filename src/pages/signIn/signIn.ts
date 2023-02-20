@@ -8,9 +8,7 @@ import {
   onSubmit,
   validateOnBlur,
 } from "../../blocks/formValidation/formValidation";
-import { route } from "../../utils/route";
-import { SignInPage } from "../signUp/signUp";
-import { MessengerPage } from "../messenger/messenger";
+import Router from '../../blocks/router/Router';
 import { ErrorInput } from "../../components/errorInput/errorInput";
 
 type SignInPageProps = {
@@ -59,8 +57,7 @@ export class SignIn extends Block<SignInPageProps> {
           class: "button button_fullWidth user-info__action",
           events: {
             click: (e) => {
-              const messengerPage = new MessengerPage({});
-              onSubmit(e, messengerPage);
+              onSubmit(e, "/messenger");
             },
           },
         }),
@@ -72,8 +69,7 @@ export class SignIn extends Block<SignInPageProps> {
           events: {
             click: (e) => {
               e.preventDefault();
-              const registrationPage = new SignInPage({});
-              route(registrationPage);
+              Router.go('/register')
             },
           },
         }),

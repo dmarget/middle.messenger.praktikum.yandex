@@ -8,7 +8,7 @@ import { ErrorInput } from "../../components/errorInput/errorInput";
 import { onSubmit, validateOnBlur } from "../../blocks/formValidation/formValidation";
 import { MessengerPage } from "../messenger/messenger";
 
-export class SignInPage extends Block {
+export class SignUpPage extends Block {
   constructor(props: any) {
     super("div", props);
   }

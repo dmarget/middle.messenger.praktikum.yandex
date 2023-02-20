@@ -5,7 +5,7 @@ import { Button } from "../../components/button/button";
 import { MessagePreview } from "../../components/messagePreview/messagePreview";
 import "./messenger.scss";
 import { ProfilePage } from "../profile/profile";
-import { route } from "../../utils/route";
+import route from "../../blocks/router/Router";
 import { ErrorInput } from "../../components/errorInput/errorInput";
 
 type MessengerPageProps = {
@@ -38,8 +38,7 @@ export class MessengerPage extends Block<MessengerPageProps> {
       events: {
         click: (e) => {
           e.preventDefault();
-          const profilePage = new ProfilePage({});
-          route(profilePage);
+          route.go("/profile")
         },
       },
     });

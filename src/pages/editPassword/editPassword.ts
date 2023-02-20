@@ -4,7 +4,7 @@ import { Input } from "../../components/input/input";
 import { UserInfo } from "../../components/userInfo/userInfo";
 import { Button } from "../../components/button/button";
 import { UserAction } from "../../components/userAction/userAction";
-import { route } from "../../utils/route";
+import route from "../../blocks/router/Router";
 import { ProfilePage } from "../profile/profile";
 import { validateOnBlur } from "../../blocks/formValidation/formValidation";
 import { ErrorInput } from "../../components/errorInput/errorInput";
@@ -76,8 +76,7 @@ export class EditPasswordPage extends Block {
           events: {
             click: (e) => {
               e.preventDefault();
-              const profilePage = new ProfilePage({});
-              route(profilePage);
+              route.go("/profile");
             },
           },
         }),

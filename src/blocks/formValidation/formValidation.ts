@@ -1,4 +1,4 @@
-import { route } from "../../utils/route";
+import route  from "../router/Router";
 import { Block } from "../block/block";
 
 class Validations {
@@ -63,7 +63,7 @@ class Validations {
     };
 }
 
-export const onSubmit = (event: any, page: Block) => {
+export const onSubmit = (event: any, page: string) => {
   event.preventDefault();
 
   const inputValue: Record<string, string> = {};
@@ -79,7 +79,7 @@ export const onSubmit = (event: any, page: Block) => {
   if (isError) {
     return;
   }
-  route(page);
+  route.go(page);
 
   inputList.forEach((input: any) => {
     inputValue[input.name] = input.value;

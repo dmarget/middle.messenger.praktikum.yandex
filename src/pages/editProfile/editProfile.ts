@@ -4,7 +4,7 @@ import { Input } from "../../components/input/input";
 import { UserInfo } from "../../components/userInfo/userInfo";
 import { Button } from "../../components/button/button";
 import { UserAction } from "../../components/userAction/userAction";
-import { route } from "../../utils/route";
+import route from "../../blocks/router/Router";
 import { ProfilePage } from "../profile/profile";
 import {
   onSubmit,
@@ -109,8 +109,7 @@ export class EditProfilePage extends Block {
           events: {
             click: (e) => {
               e.preventDefault();
-              const profilePage = new ProfilePage({});
-              onSubmit(e, profilePage);
+              onSubmit(e, "/profile");
             },
           },
         }),
@@ -122,8 +121,7 @@ export class EditProfilePage extends Block {
           events: {
             click: (e) => {
               e.preventDefault();
-              const profilePage = new ProfilePage({});
-              route(profilePage);
+              route.go("/profile");
             },
           },
         }),
